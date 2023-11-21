@@ -1,7 +1,7 @@
 # --- Proyecto final --- #
 
 # * Primero creamos la base de datos (diccionario)
-USUARIOS = {}
+USERS = {}
 
 
 # * Definimos una funcion con la que crear un nuevo registro
@@ -9,18 +9,27 @@ def register(BD):
     usuario = input("Ingrese el nombre de usuario: ")
     contraseña = input("Ingrese su contraseña: ")
     BD[usuario] = contraseña
-    # TODO Aca deberiamos guardarlo en el archivo
+    saveUsers(BD)
 
 
-# registro(USUARIOS)
+# * Definimos una funcion para guardar el diccionario en un archivo de texto
+def saveUsers(data):
+    users = open("users.txt", "w")
+    users.write(str(data))
+    users.close()
+
 
 # * Definimos una funcion con la que leer los registros
 
-# print(USUARIOS)
 
-# * Definimos una funcion para guardar el diccionario en un archivo de texto
+def readUsersDB():
+    users = open("users.txt", "r")
+    usersData = users.read()
+    users.close()
+    return usersData
 
-# * Definimos funcion de login, lee desde archivo, verifica que el usuario exista y posterior que la contraseña sea correcta
+
+# * Definimos funcion de login, verifica que el usuario exista y posterior que la contraseña sea correcta
 
 
 def login(BD):
@@ -37,6 +46,9 @@ def login(BD):
 
 
 # Ejecucion
-register(USUARIOS)
 
-login(USUARIOS)
+register(USERS)
+
+print(readUsersDB())
+
+login(USERS)
