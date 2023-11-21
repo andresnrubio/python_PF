@@ -5,7 +5,7 @@ USUARIOS = {}
 
 
 # * Definimos una funcion con la que crear un nuevo registro
-def registro(BD):
+def register(BD):
     usuario = input("Ingrese el nombre de usuario: ")
     contraseña = input("Ingrese su contraseña: ")
     BD[usuario] = contraseña
@@ -23,6 +23,20 @@ def registro(BD):
 # * Definimos funcion de login, lee desde archivo, verifica que el usuario exista y posterior que la contraseña sea correcta
 
 
-# print(registro())
+def login(BD):
+    user = input("Ingrese su nombre de usuario: ")
+    if user in BD:
+        password = input("Ingrese su contraseña: ")
+        if BD[user] == password:
+            print("Inicio de sesion exitoso")
+        else:
+            print("Contraseña incorrecta")
 
-# dict.get("clave a buscar", "error")
+    else:
+        print("El usuario es inexistente")
+
+
+# Ejecucion
+register(USUARIOS)
+
+login(USUARIOS)
