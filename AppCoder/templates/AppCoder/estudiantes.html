@@ -1,0 +1,33 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block dynamicContent %}
+</br>
+
+<form action='/AppCoder/estudiantes/' method="POST"> {% csrf_token %}
+    <legend>Carga un nuevo estudiante</legend>
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input class="form-control" id='nombre' type="text" name="nombre"/>
+    </div>
+    <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido</label>
+        <input class="form-control" id='apellido' type="text" name="apellido"/>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input class="form-control" id='email' type="email" name="email"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+</br>
+{% if status == 'success'%}
+<p style="color:green">Estudiante cargado correctamente </p>
+{%endif%}
+
+{% if status == 'error'%}
+<p style="color:red">Error al cargar el estudiante  </p>
+{%endif%}
+</br>
+{% endblock %}

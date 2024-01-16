@@ -1,0 +1,22 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block dynamicContent %}
+</br>
+
+<form action='/AppCoder/entregables/' method="POST"> {% csrf_token %}
+    <legend>Carga un nuevo entregable</legend>
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+</br>
+{% if status == 'success'%}
+<p style="color:green">Entrega cargads correctamente </p>
+{%endif%}
+
+{% if status == 'error'%}
+<p style="color:red">Error al cargar la entrega  </p>
+{%endif%}
+</br>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block dynamicContent %}
+</br>
+
+<form action='/AppCoder/cursos/' method="POST"> {% csrf_token %}
+    <legend>Carga un nuevo curso</legend>
+    <div class="mb-3">
+        <label for="curso" class="form-label">Nombre del curso</label>
+        <input class="form-control" id='curso' type="text" name="curso"/>
+    </div>
+    <div class="mb-3">
+        <label for="comision" class="form-label">Numero de comisión</label>
+        <input class="form-control" id='comision' type="number" name="comision"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+</br>
+{% if status == 'success'%}
+<p style="color:green">Curso cargado correctamente </p>
+{%endif%}
+
+{% if status == 'error'%}
+<p style="color:red">Error al cargar el curso  </p>
+{%endif%}
+</br>
+{% endblock %}
