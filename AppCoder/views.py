@@ -16,7 +16,35 @@ def inicio(request):
 
 
 def busqueda(request):
-    return render(request, "AppCoder/busqueda.html")
+    if request.GET:
+        datosDeComision = Curso.objects.filter(
+            comision__icontains=request.GET["comision"]
+        )
+        print(datosDeComision[0].nombre)
+        if datosDeComision:
+            return render(
+                request,
+                "AppCoder/busqueda.html",
+                {
+                    "status": "success",
+                    "comision": {
+                        "nombre": datosDeComision[0].nombre,
+                        "Numero": datosDeComision[0].comision,
+                    },
+                },
+            )
+        else:
+            return render(
+                request,
+                "AppCoder/index.html",
+                {"searchStatus": "error"},
+            )
+    else:
+        return render(
+            request,
+            "AppCoder/index.html",
+            {"searchStatus": "error"},
+        )
 
 
 def profesores(request):

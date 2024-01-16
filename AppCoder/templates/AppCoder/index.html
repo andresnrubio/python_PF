@@ -8,18 +8,14 @@
 <form action='/AppCoder/busqueda/' method="GET"> {% csrf_token %}
     <legend>Buscar comision</legend>
     <div class="mb-3">
-        <label for="nombre" class="form-label">Numero de comision</label>
-        <input class="form-control" id='numero' type="number" name="numero"/>
+        <label for="comision" class="form-label">Numero de comision</label>
+        <input required class="form-control" id='comision' type="number" name="comision"/>
     </div>
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 </br>
-{% if status == 'success'%}
-<p style="color:green">Estudiante cargado correctamente </p>
-{%endif%}
-
-{% if status == 'error'%}
-<p style="color:red">Error al cargar el estudiante  </p>
+{% if searchStatus == 'error'%}
+<p class="lead fw-normal text-white-50 mb-0">No se encontraron resultados para la busqueda</p>
 {%endif%}
 </br>
 {% endblock %}
