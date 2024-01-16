@@ -15,6 +15,10 @@ def inicio(request):
     return render(request, "AppCoder/index.html")
 
 
+def busqueda(request):
+    return render(request, "AppCoder/busqueda.html")
+
+
 def profesores(request):
     if request.method == "POST":
         miFormulario = formularioProfesor(request.POST)
